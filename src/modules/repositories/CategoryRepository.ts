@@ -3,7 +3,18 @@ import { ICategoryRepository } from "./ICategoryRepository";
 
 class CategoryRepository implements ICategoryRepository {
     private categories: Category[];
-    constructor(){
+    
+    private static INSTANCE: CategoryRepository;
+    
+    public static getInstance(): CategoryRepository{
+        if(!this.INSTANCE){
+            CategoryRepository.INSTANCE = new CategoryRepository();
+        }
+        return this.INSTANCE;
+    }
+
+
+    private constructor(){
         this.categories = []
     }
 
