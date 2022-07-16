@@ -1,7 +1,7 @@
 import { Category } from "../model/Category"
-import { ICategoriesRepository } from "./ICategoriesRepository";
+import { ICategoryRepository } from "./ICategoryRepository";
 
-class CategoriesRepository implements ICategoriesRepository {
+class CategoryRepository implements ICategoryRepository {
     private categories: Category[];
     constructor(){
         this.categories = []
@@ -23,4 +23,4 @@ class CategoriesRepository implements ICategoriesRepository {
     }
 }
 
-export {CategoriesRepository}
+export { CategoryRepository }

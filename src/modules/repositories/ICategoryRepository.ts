@@ -7,10 +7,10 @@ interface IRequest {
 
 
 
-interface ICategoriesRepository {
+interface ICategoryRepository {
     findByName(name : string): Category;
     list(): Category[];
     create({name, description} : IRequest):void
 }
 
-export {ICategoriesRepository, IRequest}
+export {ICategoryRepository, IRequest}

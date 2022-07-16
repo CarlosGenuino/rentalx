@@ -1,9 +1,10 @@
-import { CategoriesRepository } from "../repositories/CategoriesRepository"
-import { IRequest } from "../repositories/ICategoriesRepository";
+import { CategoryRepository } from "../../repositories/CategoryRepository";
+import { IRequest } from "../../repositories/ICategoryRepository";
 
-class CreateCategoryService {
+
+class CreateCategoryUseCase {
     
-    constructor(private repo: CategoriesRepository){
+    constructor(private repo: CategoryRepository){
     }
 
     execute({name, description}: IRequest): void {
@@ -17,4 +18,4 @@ class CreateCategoryService {
     }
 }
 
-export {CreateCategoryService}
+export {CreateCategoryUseCase}
