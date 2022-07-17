@@ -1,9 +1,19 @@
-import { Specification } from "../model/Specification";
-import { IRequest } from "./ICategoriesRepository";
-import { ISpecificationRepository } from "./ISpecificationRepository";
+import { Specification } from "../../model/Specification";
+import { IRequest } from "../ICategoryRepository";
+import { ISpecificationRepository } from "../ISpecificationRepository";
 
 class SpecificationRepository implements ISpecificationRepository {
     private specifications = [];
+
+    private static INSTANCE: SpecificationRepository;
+
+    static getInstance(){
+        if(!SpecificationRepository.INSTANCE){
+            SpecificationRepository.INSTANCE = new SpecificationRepository();
+        }
+
+        return SpecificationRepository.INSTANCE;
+    }
     
     create({ name, description }: IRequest): Specification {
         const specification = new Specification();
