@@ -41,7 +41,8 @@ class ImportCategoryUseCase {
                 categoriesToImport.push({name, description})
             })
             .on('end', ()=> {
-            resolver(categoriesToImport) 
+                fs.promises.unlink(file.path)
+                resolver(categoriesToImport) 
             })
             .on('error', (err)=> {
                 reject(err)
