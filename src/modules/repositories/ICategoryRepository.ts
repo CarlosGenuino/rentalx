@@ -1,4 +1,4 @@
-import { Category } from "../model/Category";
+import { Category } from "../entities/Category";
 
 interface IRequest {
     name: string,
@@ -8,9 +8,9 @@ interface IRequest {
 
 
 interface ICategoryRepository {
-    findByName(name : string): Category;
-    list(): Category[];
-    create({name, description} : IRequest):void
+    findByName(name : string): Promise<Category>;
+    list(): Promise<Category[]>;
+    create({name, description} : IRequest): Promise<void>
 }
 
 export {ICategoryRepository, IRequest}

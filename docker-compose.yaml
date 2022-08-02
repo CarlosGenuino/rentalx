@@ -1,0 +1,53 @@
+version: '3.9'
+  
+services:
+  db:
+    image: postgres
+    container_name: rentalx_db
+    environment:
+      - POSTGRES_DB=rentalx
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_USER=develop
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/data/postgres
+    networks:
+      - ignite-net
+  
+  app:
+    container_name: rentx
+    build: .
+    ports:
+      - 3333:3333
+      - 9229:9229 #Você pode inserir essa porta tbm pra poder usar o debug
+    links:
+      - "db"
+    depends_on:
+      - "db"
+    volumes:
+      - .:/usr/app
+    networks:
+      - ignite-net
+      
+  pgadmin4:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "rentalx@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "123456"
+    ports:
+      - "15000:80"
+    depends_on:
+      - db
+    networks:
+      - ignite-net
+
+volumes:
+  pgdata:
+    driver: local
+
+networks: 
+  ignite-net:
+    driver: bridge
