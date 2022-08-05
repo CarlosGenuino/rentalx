@@ -1,7 +1,6 @@
 import { Repository } from 'typeorm';
 import AppDataSource from "../../../database";
 import { Specification } from "../../entities/Specification";
-import { IRequest } from "../ICategoryRepository";
 import { ISpecificationRepository } from "../ISpecificationRepository";
 
 class SpecificationRepository implements ISpecificationRepository {

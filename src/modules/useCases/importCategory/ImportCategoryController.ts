@@ -4,10 +4,10 @@ import { ImportCategoryUseCase } from "./ImportCategoryUseCase";
 
 class ImportCategoryController {
    
-    handle(req: Request, resp: Response):Response {
+    async handle(req: Request, resp: Response):Promise<Response> {
         const { file } = req
         const useCase = container.resolve(ImportCategoryUseCase);
-        useCase.execute(file);
+        await useCase.execute(file);
         return resp.send();
     }
 }
