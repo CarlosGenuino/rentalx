@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm"
 import { Category } from "../modules/entities/Category"
+import { Specification } from "../modules/entities/Specification";
 
 
 const AppDataSource = new DataSource({
@@ -9,7 +10,7 @@ const AppDataSource = new DataSource({
     username: "develop",
     password: "123456",
     database: "rentalx",
-    entities: [Category],
+    entities: [Category, Specification],
     synchronize: true,
     logging: false,
     migrations: ["./src/database/migrations/*.ts"],
