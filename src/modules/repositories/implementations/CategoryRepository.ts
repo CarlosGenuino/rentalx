@@ -1,5 +1,5 @@
 import e from "express";
-import { Repository } from "typeorm"
+import { getRepository, Repository } from "typeorm"
 import AppDataSource from "../../../database";
 
 import { Category } from "../../entities/Category"
@@ -10,11 +10,11 @@ class CategoryRepository implements ICategoryRepository {
     private repository: Repository<Category>;
     
     constructor(){
-       
+        this.repository = AppDataSource.getRepository(Category);
     }
 
     async findByName(name: string): Promise<Category> {
-        const category = await this.repository.findOneBy({name})
+        const category = await this.repository.findOneBy({name: name})
         return category;
     }
 
