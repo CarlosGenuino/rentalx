@@ -6,9 +6,9 @@ import { ListCategoryUseCase } from "./ListCategoryUseCase";
 class ListCategoryController {
     
     
-    handle(request: Request, response: Response ): Response {
+    async handle(request: Request, response: Response ): Promise<Response> {
         const useCase = container.resolve(ListCategoryUseCase);
-        return response.status(200).json(useCase.execute())  
+        return useCase.execute().then(list => response.json(list).send())
     }
 }
 

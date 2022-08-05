@@ -6,10 +6,10 @@ class CreateSpecificationController{
     
   
 
-    handle(request: Request, response : Response){
+    async handle(request: Request, response : Response){
         const {name, description}  = request.body
         const useCase = container.resolve(CreateSpecificationUseCase);
-        useCase.execute({name, description});
+        await useCase.execute({name, description});
         return response.status(201).send()
     }
 }

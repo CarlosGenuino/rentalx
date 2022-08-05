@@ -10,7 +10,7 @@ class CreateSpecificationUseCase {
         private repo: ISpecificationRepository){
     }
 
-    execute({name, description}: IRequest){
+    async execute({name, description}: IRequest){
         this.repo.create({name, description});
     }
 }

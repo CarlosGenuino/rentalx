@@ -16,8 +16,8 @@ class ImportCategoryUseCase {
         
     }
 
-    execute(file: Express.Multer.File): void {
-        const categories = this.loadCategories(file).then(
+    async execute(file: Express.Multer.File): Promise<void> {
+        this.loadCategories(file).then(
             categories => {
                 categories.map(category => {
                     const {name, description} = category
