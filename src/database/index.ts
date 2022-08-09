@@ -1,11 +1,11 @@
 import { DataSource } from "typeorm"
-import { Category } from "../modules/entities/Category"
-import { Specification } from "../modules/entities/Specification";
+import { Category } from "../modules/cars/entities/Category"
+import { Specification } from "../modules/cars/entities/Specification";
 
 
 const AppDataSource = new DataSource({
     type: "postgres",
-    host: "db",
+    host: "localhost",
     port: 5432,
     username: "develop",
     password: "123456",

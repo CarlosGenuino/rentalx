@@ -1,6 +1,6 @@
 import e from "express";
-import { getRepository, Repository } from "typeorm"
-import AppDataSource from "../../../database";
+import { Repository } from "typeorm"
+import AppDataSource from "../../../../database";
 
 import { Category } from "../../entities/Category"
 import { ICategoryRepository } from "../ICategoryRepository";

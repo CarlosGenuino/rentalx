@@ -4,6 +4,7 @@ services:
   db:
     image: postgres
     container_name: rentalx_db
+    restart: always
     environment:
       - POSTGRES_DB=rentalx
       - POSTGRES_PASSWORD=123456
