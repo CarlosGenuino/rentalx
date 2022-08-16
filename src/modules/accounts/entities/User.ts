@@ -21,7 +21,11 @@ class User {
     
     @Column()
     driver_license: string
+
     
+    @Column()
+    avatar: string;
+
     @Column()
     isAdmin: boolean;
     

@@ -19,14 +19,21 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     try{
        const {sub} = verify(token, "f27bbca8396ec3bda41f0f3d84fdcc3b") as IToken       
        const userRepo = new UserRepository();
-       const user = userRepo.findById(sub);
+       const user = await userRepo.findById(sub);
 
        if(!user){
           throw new ApiError("user not alowed", 403);
        }
+    
+       
+        request.user = {
+            id: sub
+        }
+        
     }catch(e){
         throw new ApiError("token invalid", 401)
     }
     
+
     next()
 }
